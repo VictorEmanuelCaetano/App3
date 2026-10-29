@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel2.Views.ContratacaoHospedagem"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#E8F5E9"
+             Title="ContratacaoHospedagem">
+
+    <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="Center">
+
+        <Label Text="Cálculo da Diária"
+               FontFamily="PoppinsBold"
+               FontSize="32"
+               TextColor="#2E7D32"
+               HorizontalOptions="Center" />
+
+        <Label Text="{Binding Value, StringFormat='Adultos: {0}'}"
+               BindingContext="{x:Reference stp_adultos}" />
+        <Stepper x:Name="stp_adultos" Minimum="0" Maximum="10" />
+
+        <Label Text="{Binding Value, StringFormat='Crianças: {0}'}"
+               BindingContext="{x:Reference stp_criancas}" />
+        <Stepper x:Name="stp_criancas" Minimum="0" Maximum="10" />
+
+        <Label Text="Escolha sua Suíte:" />
+        <Picker x:Name="pck_quarto"
+                Title="Selecione"
+                ItemDisplayBinding="{Binding Descricao}" />
+
+        <Label Text="Check-in:" />
+        <DatePicker x:Name="dtpck_checkin"
+                    Format="dd/MM/yyyy"
+                    DateSelected="dtpck_checkin_DateSelected" />
+
+        <Label Text="Check-out:" />
+        <DatePicker x:Name="dtpck_checkout" Format="dd/MM/yyyy" />
+
+        <Button Text="Avançar" BackgroundColor="#2E7D32" Clicked="Button_Avancar_Clicked" />
+        <Button Text="Sobre" BackgroundColor="#F9A825" Clicked="Button_Sobre_Clicked" />
+
+    </VerticalStackLayout>
+</ContentPage>
